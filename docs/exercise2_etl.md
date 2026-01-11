@@ -113,4 +113,4 @@ Some numeric fields in `customers.csv` appear as float-like strings (e.g., `1.0`
 
 ### Example successful run output (validation):
 
-![ETL Pipeline run output](02_ETL_pipeline_picture.png)
+![ETL Pipeline run output](02_ETL_pipeline_sample.png)
