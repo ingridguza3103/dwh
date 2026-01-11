@@ -3,15 +3,15 @@
 -- Schema: hm_dwh
 --
 -- This file contains 3 portfolio analytics queries:
---  (1) Top product groups by revenue + % share (portfolio leaders)
---  (9) Underperformers: product groups with high units but low avg price
--- (10) Regional portfolio differences: top product groups by region
+--  (A) Top product groups by revenue + % share (portfolio leaders)
+--  (B) Underperformers: product groups with high units but low avg price
+--  (C) Regional portfolio differences: top product groups by region
 --
 -- All queries use schema-qualified names (hm_dwh.*).
 -- ============================================================
 
 -- ============================================================
--- (1) Top product groups by revenue + % share (portfolio leaders)
+-- (A) Top product groups by revenue + % share (portfolio leaders)
 -- Shows the highest-revenue product groups and their contribution to total revenue.
 -- ============================================================
 WITH grp AS (
@@ -35,7 +35,7 @@ ORDER BY g.revenue DESC
 LIMIT 20;
 
 -- ============================================================
--- (9) Underperformers: product groups with high units but low avg price
+-- (B) Underperformers: product groups with high units but low avg price
 -- Identifies product groups that sell in large volumes but have relatively low pricing.
 -- The threshold (HAVING COUNT(*) > 100000) can be adjusted depending on desired strictness.
 -- ============================================================
@@ -51,9 +51,8 @@ HAVING COUNT(*) > 100000
 ORDER BY avg_price ASC, revenue DESC;
 
 -- ============================================================
--- (10) Regional portfolio differences: top product groups by region
+-- (C) Regional portfolio differences: top product groups by region
 -- Shows the top 5 product groups by revenue for each Swedish region.
--- Useful for identifying regional demand differences.
 -- ============================================================
 WITH rg AS (
   SELECT

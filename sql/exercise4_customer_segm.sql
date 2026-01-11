@@ -3,16 +3,16 @@
 -- Schema: hm_dwh
 --
 -- This file contains 4 customer segmentation queries:
---  1) Revenue contribution by age range (with % share)
---  2) Revenue contribution by Swedish region (with % share)
---  3) Top product groups by age range (preference profiling)
+--  A) Revenue contribution by age range (with % share)
+--  (B) Revenue contribution by Swedish region (with % share)
+--  (C) Top product groups by age range (preference profiling)
 --
 -- All queries use schema-qualified names (hm_dwh.*) so they work
 -- regardless of search_path settings in VS Code extensions.
 -- ============================================================
 
 -- ============================================================
--- (1) Revenue contribution by age range
+-- (A) Revenue contribution by age range
 -- Shows which age buckets generate the most sales and their % share.
 -- ============================================================
 WITH sales_by_age AS (
@@ -36,7 +36,7 @@ CROSS JOIN total t
 ORDER BY s.revenue DESC;
 
 -- ============================================================
--- (2) Revenue contribution by Swedish region
+-- (B) Revenue contribution by Swedish region
 -- Which Swedish region contributes most (revenue + % share).
 -- ============================================================
 WITH sales_by_region AS (
@@ -61,7 +61,7 @@ CROSS JOIN total t
 ORDER BY s.revenue DESC;
 
 -- ============================================================
--- (3) Customer preference segmentation: Top product groups by age range
+-- (C) Customer preference segmentation: Top product groups by age range
 -- Shows what each age group buys (top 5 product groups by revenue).
 -- ============================================================
 WITH sales_age_group AS (
