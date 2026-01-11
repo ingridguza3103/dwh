@@ -12,7 +12,7 @@ Write SQL queries on the DWH schema (`hm_dwh`) to produce:
 
 ## How to run
 1. Connect to the PostgreSQL database where the ETL loaded the data.
-2. Open `sql/03_exercise3_queries.sql` in VS Code (PostgreSQL extension).
+2. Open `sql/03_exercise3_queries.sql` and run in SQL tool.
 3. Execute each query (highlight and run), or run the whole file.
 
 ## Pivot table implementation
@@ -29,18 +29,22 @@ In PostgreSQL, a pivot is implemented via **conditional aggregation**:
 
 This produces a pivot-like result without requiring additional extensions.
 
-## Query notes / assumptions
-- **(b) “How many articles sold”** is interpreted as:
-  - total units sold = `COUNT(*)` over fact rows in 2019  
-  Additionally, an optional query for distinct SKUs (`COUNT(DISTINCT article_id)`) is included.
-- **(e) “Product category”** is interpreted as `product_group_name` (retail-level category).  
-  If required, it can be changed to `product_type_name`.
-
 ## Output
 Running the queries returns:
 - customer count with at least one purchase
+![A](exercise 3/A.png)
+
 - total items sold in 2019
+![B](exercise 3/B.png)
+
 - sales aggregates by graphical appearance
+![C](exercise 3/C.png)
+
 - sales by region × product type × season
+![D](exercise 3/D.png)
+
 - Stockholm sales by product group × month
+![E](exercise 3/E.png)
+
 - top color group per season by total sales
+![F](exercise 3/F.png)
