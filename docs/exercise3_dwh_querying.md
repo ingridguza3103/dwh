@@ -7,7 +7,7 @@ Write SQL queries on the DWH schema (`hm_dwh`) to produce:
 
 ## Files
 - `sql/03_exercise3_queries.sql` — contains:
-  - Pivot query (region × product type with time as season columns)
+  - Pivot query (region x product type with time as season columns)
   - Queries (a)–(f) required by the assignment
 
 ## How to run
@@ -43,11 +43,11 @@ Running the queries returns:
 
 ![C](./exercise%203/C.png)
 
-- sales by region × product type × season
+- sales by region x product type x season
 
 ![D](./exercise%203/D.png)
 
-- Stockholm sales by product group × month
+- Stockholm sales by product group x month
 
 ![E](./exercise%203/E.png)
 

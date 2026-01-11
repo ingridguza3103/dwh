@@ -39,24 +39,24 @@ python code/etl_load.py --zip dwh.zip --host localhost --port 5432 --db dwh --us
 
 ## Pipeline steps (high level)
 
-1) **Extract**  
+1) **Extract**
 - Unzips `dwh.zip` into a temporary directory.
 
-2) **Create/ensure schema & tables**  
+2) **Create/ensure schema & tables**
 - Ensures the star schema exists (`dim_region`, `dim_date`, `dim_customer`, `dim_article`, `fact_sales`).  
 - Creates staging tables (`stg_*`) to load raw CSV data.
 
-3) **Truncate for clean reload**  
+3) **Truncate for clean reload**
 - Truncates staging + target tables in an FK-safe way.
 
-4) **Load staging (fast COPY)**  
+4) **Load staging (fast COPY)**
 Uses PostgreSQL `COPY` to load:
 - `articles.csv` → `stg_articles`
 - `customers.csv` → `stg_customers`
 - `transactions.csv` → `stg_transactions`
 - `open-meteo-2019.csv` → `stg_weather`
 
-5) **Transform + Load dimensions**  
+5) **Transform + Load dimensions**
 - `dim_article`: inserted from `stg_articles`
 - `dim_customer`: streamed from `stg_customers`, then transformed:
   - `region_id = int(postal_code, 16) % 10`
@@ -64,11 +64,11 @@ Uses PostgreSQL `COPY` to load:
   - integer cleaning for float-like values (e.g., `1.0`)
 - `dim_date`: generated for all days in 2019 (`generate_series`) and enriched via left join to weather
 
-6) **Load fact**  
-- `fact_sales` inserted from `stg_transactions`  
+6) **Load fact**
+- `fact_sales` inserted from `stg_transactions`
 - Joins to dimensions are used to prevent FK insert issues.
 
-7) **Validation**  
+7) **Validation**
 - Prints row counts for all loaded tables and key derived-field sanity checks.
 
 ---
@@ -95,19 +95,19 @@ Some numeric fields in `customers.csv` appear as float-like strings (e.g., `1.0`
 ## Assumptions used (as required in Exercise 1)
 
 ### Season mapping
-- Winter = Dec–Feb  
-- Spring = Mar–May  
-- Summer = Jun–Aug  
-- Autumn = Sep–Nov  
+- Winter = Dec–Feb
+- Spring = Mar–May
+- Summer = Jun–Aug
+- Autumn = Sep–Nov
 
 ### Age bins
-- 0–17  
-- 18–24  
-- 25–34  
-- 35–44  
-- 45–54  
-- 55–64  
-- 65+  
+- 0–17
+- 18–24
+- 25–34
+- 35–44
+- 45–54
+- 55–64
+- 65+
 - UNKNOWN (missing/invalid age)
 
 
