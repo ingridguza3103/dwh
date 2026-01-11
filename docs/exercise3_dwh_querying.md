@@ -33,24 +33,24 @@ This produces a pivot-like result without requiring additional extensions.
 Running the queries returns:
 - customer count with at least one purchase
 
-![A](exercise 3/A.png)
+![A](./exercise%203/A.png)
 
 - total items sold in 2019
 
-![B](exercise 3/B.png)
+![B](./exercise%203/B.png)
 
 - sales aggregates by graphical appearance
 
-![C](exercise 3/C.png)
+![C](./exercise%203/C.png)
 
 - sales by region × product type × season
 
-![D](exercise 3/D.png)
+![D](./exercise%203/D.png)
 
 - Stockholm sales by product group × month
 
-![E](exercise 3/E.png)
+![E](./exercise%203/E.png)
 
 - top color group per season by total sales
 
-![F](exercise 3/F.png)
+![F](./exercise%203/F.png)
