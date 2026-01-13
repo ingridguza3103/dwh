@@ -2,7 +2,7 @@
 -- Exercise 4 — Customer Segmentation & Analytics (Custom Queries)
 -- Schema: hm_dwh
 --
--- This file contains 4 customer segmentation queries:
+-- This file contains 3 customer segmentation queries:
 --  A) Revenue contribution by age range (with % share)
 --  (B) Revenue contribution by Swedish region (with % share)
 --  (C) Top product groups by age range (preference profiling)
